@@ -3,9 +3,7 @@ const cors = require('cors');
 const app = express();
 
 // CORS configuration without trailing slash
-app.use(cors({
-  origin: 'https://polite-dune-0be117c0f.5.azurestaticapps.net' 
-}));
+app.use(cors());
 
 // Root route for testing
 app.get('/', (req, res) => {
