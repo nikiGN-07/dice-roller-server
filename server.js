@@ -2,8 +2,9 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 
-// CORS configuration without trailing slash
-app.use(cors());
+app.use(cors({
+  origin: '*'
+}));
 
 // Root route for testing
 app.get('/', (req, res) => {
