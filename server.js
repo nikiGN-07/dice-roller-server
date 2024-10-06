@@ -1,16 +1,19 @@
-// server.js
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://polite-dune-0be117c0f.5.azurestaticapps.net/', 
+}));
 
-app.get('/roll', (req, res) => {
-    const rolls = Array.from({ length: 5 }, () => Math.floor(Math.random() * 6) + 1);
-    res.json({ rolls });
+// REST API to roll dice
+app.get('/roll-dice', (req, res) => {
+  const randomNumber = Math.floor(Math.random() * 6) + 1;
+  res.json({ result: randomNumber });
 });
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+// Start server
+const port = process.env.PORT || 3000;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });
